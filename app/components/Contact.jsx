@@ -1,6 +1,26 @@
+'use client'
+
+import Map from './Map'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
+
+const variants = {
+  visible: { y: 0, opacity: 1, filter: 'blur(0px)' },
+  hidden: { y: 50, opacity: 0, filter: 'blur(2px)' },
+}
+
 export default function Contact() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
   return (
-    <section id="contact" className="bg-gray-100 py-20">
+    <motion.section
+      id="contact"
+      className="bg-gray-100 py-20"
+      ref={ref}
+      variants={variants}
+      animate={isInView ? 'visible' : 'hidden'}
+      transition={{ duration: 0.5 }}
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold mb-4 text-center">Contactez-nous</h2>
         <p className="text-lg mb-8 text-center">
@@ -18,13 +38,8 @@ export default function Contact() {
             <p className="text-gray-700 mb-2">
               Email : contact@notariaprestige.com
             </p>
-            <div className="mt-8">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.995617392818!2d2.352236315678677!3d48.85837007928747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef8e8!2s123%20Rue%20de%20la%20R%C3%A9publique%2C%2075000%20Paris!5e0!3m2!1sfr!2sfr!4v1633042774782!5m2!1sfr!2sfr"
-                className="w-full max-w-3xl h-72 rounded-lg shadow-lg"
-                allowFullScreen=""
-                loading="lazy"
-              ></iframe>
+            <div className="relative z-10 mt-8">
+              <Map />
             </div>
           </div>
           <div>
@@ -33,29 +48,38 @@ export default function Contact() {
             </h3>
             <form className="flex flex-col">
               <div className="mb-4">
-                <label className="block text-gray-700">Nom</label>
+                <label className="block text-gray-700" htmlFor="name">
+                  Nom
+                </label>
                 <input
                   type="text"
+                  id="name"
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Email</label>
+                <label className="block text-gray-700" htmlFor="email">
+                  Email
+                </label>
                 <input
                   type="email"
+                  id="email"
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-gray-700">Message</label>
+                <label className="block text-gray-700" htmlFor="message">
+                  Message
+                </label>
                 <textarea
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                  id="message"
                   rows="6"
                 ></textarea>
               </div>
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300 self-center"
+                className="bg-blue-600 text-white text-lg px-4 md:px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300 self-center"
               >
                 Envoyer
               </button>
@@ -63,6 +87,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

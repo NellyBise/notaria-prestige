@@ -11,7 +11,7 @@ export default function Footer() {
         <a
           href="https://www.nelly-bise.fr/"
           target="_blank"
-          className="text-blue-300 hover:underline"
+          className="text-blue-500 hover:underline"
         >
           Nelly Bise
         </a>

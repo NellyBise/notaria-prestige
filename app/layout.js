@@ -1,8 +1,8 @@
-import { Roboto } from 'next/font/google'
+import { Lora } from 'next/font/google'
 import './globals.css'
 
-const roboto = Roboto({
-  variable: '--font-Roboto',
+const lora = Lora({
+  variable: '--font-Lora',
   subsets: ['latin'],
   weight: '400',
 })
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr">
-      <body className={`${roboto.variable}  antialiased`}>{children}</body>
+      <body className={`${lora.variable} antialiased`}>{children}</body>
     </html>
   )
 }

@@ -20,6 +20,10 @@ export default function About() {
             src={jean}
             alt="Jean Dupont"
             className="rounded-full mx-auto mb-4 h-48 md:h-96 object-cover object-top"
+            quality={75}
+            sizes="(max-width: 768px) 100vw, 
+               (max-width: 1200px) 50vw,
+               33vw"
           />
           <h3 className="text-xl font-semibold mb-2">Jean Dupont</h3>
           <p className="text-gray-700">
@@ -32,6 +36,12 @@ export default function About() {
             src={marie}
             alt="Marie Martin"
             className="rounded-full mx-auto mb-4 h-48 md:h-96 object-cover object-top"
+            quality={75}
+            priority={false}
+            loading="lazy"
+            sizes="(max-width: 768px) 100vw, 
+               (max-width: 1200px) 50vw,
+               33vw"
           />
           <h3 className="text-xl font-semibold mb-2">Marie Martin</h3>
           <p className="text-gray-700">

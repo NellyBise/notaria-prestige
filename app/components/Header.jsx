@@ -12,7 +12,7 @@ export default function Header() {
   }
 
   return (
-    <header className="bg-gray-800 text-white py-4 relative sticky top-0">
+    <header className="z-30 bg-gray-800 text-white py-4 relative sticky top-0">
       <div className="container mx-auto flex justify-between items-center px-4">
         <div className="flex gap-4 items-center">
           <Image src={logo} alt="logo" width="40" height="40" />
@@ -48,6 +48,7 @@ export default function Header() {
           <button
             onClick={toggleMenu}
             className="text-white focus:outline-none"
+            aria-label="Menu de navigation"
           >
             <svg
               className="w-6 h-6"
